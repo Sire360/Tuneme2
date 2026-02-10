@@ -52,6 +52,7 @@
   </header>
 
   <main class="shell">
+    <!-- LEFT SIDEBAR -->
     <aside class="sidebar" aria-label="Sidebar">
       <div class="sideItem isActive"><span class="ico">🏠</span> Home</div>
       <div class="sideItem"><span class="ico">📚</span> My Knowledge</div>
@@ -62,15 +63,17 @@
       <div class="sideItem"><span class="ico">👤</span> Update Profile</div>
     </aside>
 
+    <!-- MAIN CONTENT -->
     <section class="content" aria-label="Main content">
-
+      <!-- HOME VIEW -->
       <section id="homeView" class="view isVisible" aria-label="Home">
-
+        <!-- CAROUSEL -->
         <section class="carousel" aria-label="Featured">
           <div class="carouselTrack" id="carouselTrack"></div>
           <div class="carouselDots" id="carouselDots" aria-label="Carousel dots"></div>
         </section>
 
+        <!-- HERO -->
         <div class="heroRow">
           <div class="heroCard">
             <div class="heroText">
@@ -79,12 +82,14 @@
               <p class="heroSub" id="heroSub">
                 Quick cards, mini stories, and quizzes — in a UN-course learning style.
               </p>
+
               <div class="heroActions">
                 <button class="primaryBtn" id="startBtn" type="button">Start Learning</button>
                 <button class="ghostBtn" id="howBtn" type="button">How it works</button>
               </div>
             </div>
 
+            <!-- Character stage -->
             <div class="heroArt" aria-hidden="true">
               <div class="avatarStage">
                 <div class="avatarBubble" id="avatarBubble">Hi 👋 Pick a topic!</div>
@@ -94,39 +99,71 @@
           </div>
         </div>
 
+        <!-- TOPICS -->
         <h2 class="sectionTitle">Choose a topic</h2>
 
         <div class="topicGrid" role="list">
           <button class="topicTile" data-topic="trueStories" role="listitem">
-            <div class="tileIcon"><div class="iconBox"><div class="iconCircle">TRUE<br/>STORY</div></div></div>
-            <div class="tileText"><div class="tileTitle">True Stories</div><div class="tileSub">Real life stories</div></div>
+            <div class="tileIcon">
+              <div class="iconBox">
+                <div class="iconCircle">TRUE<br/>STORY</div>
+              </div>
+            </div>
+            <div class="tileText">
+              <div class="tileTitle">True Stories</div>
+              <div class="tileSub">Real life stories</div>
+            </div>
           </button>
 
           <button class="topicTile" data-topic="yourBody" role="listitem">
-            <div class="tileIcon"><div class="iconBox"><div class="stickPerson"></div></div></div>
-            <div class="tileText"><div class="tileTitle">Your Body</div><div class="tileSub">Basics on your body</div></div>
+            <div class="tileIcon">
+              <div class="iconBox">
+                <div class="stickPerson"></div>
+              </div>
+            </div>
+            <div class="tileText">
+              <div class="tileTitle">Your Body</div>
+              <div class="tileSub">Basics on your body</div>
+            </div>
           </button>
 
           <button class="topicTile" data-topic="sex" role="listitem">
-            <div class="tileIcon"><div class="iconBox"><div class="iconCircle">Sex</div></div></div>
-            <div class="tileText"><div class="tileTitle">Sex</div><div class="tileSub">Sex Talk 101</div></div>
+            <div class="tileIcon">
+              <div class="iconBox">
+                <div class="iconCircle">Sex</div>
+              </div>
+            </div>
+            <div class="tileText">
+              <div class="tileTitle">Sex</div>
+              <div class="tileSub">Sex Talk 101</div>
+            </div>
           </button>
 
           <button class="topicTile" data-topic="relationships" role="listitem">
-            <div class="tileIcon"><div class="iconBox"><div class="heartCheck"></div></div></div>
-            <div class="tileText"><div class="tileTitle">Relationships</div><div class="tileSub">All about love</div></div>
+            <div class="tileIcon">
+              <div class="iconBox">
+                <div class="heartCheck"></div>
+              </div>
+            </div>
+            <div class="tileText">
+              <div class="tileTitle">Relationships</div>
+              <div class="tileSub">All about love</div>
+            </div>
           </button>
         </div>
       </section>
 
+      <!-- COURSE VIEW -->
       <section id="courseView" class="view" aria-label="Course">
         <div class="courseTop">
           <button class="backLink" id="backHomeBtn" type="button">← Back</button>
+
           <div class="courseHeading">
             <div class="courseKicker" id="courseKicker">MY KNOWLEDGE</div>
             <h2 class="courseTitle" id="courseTitle">Topic</h2>
             <div class="courseMeta" id="courseMeta"></div>
           </div>
+
           <div class="courseRight">
             <div class="progressDots" id="progressDots" aria-label="Progress"></div>
           </div>
@@ -140,11 +177,15 @@
             <button class="primaryBtn" id="nextBtn" type="button">Next</button>
           </div>
 
-          <div class="tinyBar"><div class="tinyFill" id="tinyFill"></div></div>
+          <div class="tinyBar">
+            <div class="tinyFill" id="tinyFill"></div>
+          </div>
+
           <p class="hint" id="hintText">Tip: Answer quiz questions to unlock Next.</p>
         </div>
       </section>
 
+      <!-- MODAL -->
       <div class="modal" id="modal" aria-hidden="true">
         <div class="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
           <h3 id="modalTitle">How it works</h3>

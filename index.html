@@ -24,20 +24,34 @@
 
     <div class="topbarRight">
       <button class="pillBtn" id="downloadBtn" type="button">Download</button>
+
       <label class="selectWrap" aria-label="Country">
         <span class="muted">Country</span>
         <select id="countrySelect">
-          <option>Botswana</option>
-          <option>Zambia</option>
-          <option>Zimbabwe</option>
-          <option>Namibia</option>
+          <option value="Zambia" selected>Zambia</option>
+          <option value="Botswana">Botswana</option>
+          <option value="Zimbabwe">Zimbabwe</option>
+          <option value="Namibia">Namibia</option>
         </select>
       </label>
+
+      <label class="selectWrap" aria-label="Language">
+        <span class="muted">Language</span>
+        <select id="langSelect">
+          <option value="en" selected>English</option>
+          <option value="ny">Nyanja</option>
+          <option value="bem">Bemba</option>
+          <option value="loz">Silozi</option>
+        </select>
+      </label>
+
+      <button class="soundBtn" id="soundBtn" type="button" aria-pressed="true" title="Toggle sound">
+        🔊 Sound
+      </button>
     </div>
   </header>
 
   <main class="shell">
-    <!-- LEFT SIDEBAR -->
     <aside class="sidebar" aria-label="Sidebar">
       <div class="sideItem isActive"><span class="ico">🏠</span> Home</div>
       <div class="sideItem"><span class="ico">📚</span> My Knowledge</div>
@@ -48,18 +62,22 @@
       <div class="sideItem"><span class="ico">👤</span> Update Profile</div>
     </aside>
 
-    <!-- CONTENT -->
     <section class="content" aria-label="Main content">
 
-      <!-- HOME VIEW -->
       <section id="homeView" class="view isVisible" aria-label="Home">
+
+        <section class="carousel" aria-label="Featured">
+          <div class="carouselTrack" id="carouselTrack"></div>
+          <div class="carouselDots" id="carouselDots" aria-label="Carousel dots"></div>
+        </section>
+
         <div class="heroRow">
           <div class="heroCard">
             <div class="heroText">
               <div class="heroKicker">• ABOUT</div>
-              <h1 class="heroTitle"><span class="accent">SEX</span> INFORMATION HERE</h1>
-              <p class="heroSub">
-                Learn with quick cards, mini stories, and quizzes — like UN-style micro-courses.
+              <h1 class="heroTitle"><span class="accent">MICRO</span> COURSES</h1>
+              <p class="heroSub" id="heroSub">
+                Quick cards, mini stories, and quizzes — in a UN-course learning style.
               </p>
               <div class="heroActions">
                 <button class="primaryBtn" id="startBtn" type="button">Start Learning</button>
@@ -67,47 +85,10 @@
               </div>
             </div>
 
-            <!-- Character (SVG illustration to match “course character” vibe) -->
             <div class="heroArt" aria-hidden="true">
-              <div class="avatar">
-                <svg viewBox="0 0 220 260" role="img" aria-label="Character illustration">
-                  <defs>
-                    <linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0" stop-color="#6a5cff"/>
-                      <stop offset="1" stop-color="#4a3cff"/>
-                    </linearGradient>
-                    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0" stop-color="#33343b"/>
-                      <stop offset="1" stop-color="#1f2026"/>
-                    </linearGradient>
-                  </defs>
-                  <!-- head -->
-                  <circle cx="110" cy="60" r="40" fill="url(#skin)"/>
-                  <!-- hair -->
-                  <path d="M70,55 C75,20 145,20 150,55 C145,35 75,35 70,55Z" fill="#14151a"/>
-                  <!-- glasses -->
-                  <rect x="78" y="55" width="36" height="22" rx="8" fill="none" stroke="#0f1020" stroke-width="3"/>
-                  <rect x="116" y="55" width="36" height="22" rx="8" fill="none" stroke="#0f1020" stroke-width="3"/>
-                  <line x1="114" y1="66" x2="116" y2="66" stroke="#0f1020" stroke-width="3"/>
-                  <!-- eyes -->
-                  <circle cx="96" cy="66" r="3.5" fill="#dfe5ff"/>
-                  <circle cx="134" cy="66" r="3.5" fill="#dfe5ff"/>
-                  <!-- body -->
-                  <path d="M65,120 C80,95 140,95 155,120 L170,175 C152,195 68,195 50,175 Z"
-                        fill="url(#shirt)"/>
-                  <!-- laptop -->
-                  <rect x="70" y="145" width="80" height="45" rx="8" fill="#0f1020"/>
-                  <polygon points="108,162 116,176 100,176" fill="#dfe5ff" opacity="0.85"/>
-                  <!-- legs -->
-                  <path d="M75,190 L95,250 L115,250 L105,190 Z" fill="#1b1c22"/>
-                  <path d="M125,190 L135,250 L155,250 L145,190 Z" fill="#1b1c22"/>
-                  <!-- shoes -->
-                  <rect x="88" y="244" width="34" height="12" rx="6" fill="#0f1020"/>
-                  <rect x="132" y="244" width="34" height="12" rx="6" fill="#0f1020"/>
-                </svg>
-
-                <div class="floatingTag tagLeft">WWW 🔍</div>
-                <div class="floatingTag tagRight">❤</div>
+              <div class="avatarStage">
+                <div class="avatarBubble" id="avatarBubble">Hi 👋 Pick a topic!</div>
+                <div class="avatarWrap" id="avatarWrap"></div>
               </div>
             </div>
           </div>
@@ -117,62 +98,34 @@
 
         <div class="topicGrid" role="list">
           <button class="topicTile" data-topic="trueStories" role="listitem">
-            <div class="tileIcon">
-              <div class="iconBox">
-                <div class="iconCircle">TRUE<br/>STORY</div>
-              </div>
-            </div>
-            <div class="tileText">
-              <div class="tileTitle">True Stories</div>
-              <div class="tileSub">Real life stories</div>
-            </div>
+            <div class="tileIcon"><div class="iconBox"><div class="iconCircle">TRUE<br/>STORY</div></div></div>
+            <div class="tileText"><div class="tileTitle">True Stories</div><div class="tileSub">Real life stories</div></div>
           </button>
 
           <button class="topicTile" data-topic="yourBody" role="listitem">
-            <div class="tileIcon">
-              <div class="iconBox">
-                <div class="stickPerson"></div>
-              </div>
-            </div>
-            <div class="tileText">
-              <div class="tileTitle">Your Body</div>
-              <div class="tileSub">Basics on your body</div>
-            </div>
+            <div class="tileIcon"><div class="iconBox"><div class="stickPerson"></div></div></div>
+            <div class="tileText"><div class="tileTitle">Your Body</div><div class="tileSub">Basics on your body</div></div>
           </button>
 
           <button class="topicTile" data-topic="sex" role="listitem">
-            <div class="tileIcon">
-              <div class="iconBox">
-                <div class="iconCircle">Sex</div>
-              </div>
-            </div>
-            <div class="tileText">
-              <div class="tileTitle">Sex</div>
-              <div class="tileSub">Sex Talk 101</div>
-            </div>
+            <div class="tileIcon"><div class="iconBox"><div class="iconCircle">Sex</div></div></div>
+            <div class="tileText"><div class="tileTitle">Sex</div><div class="tileSub">Sex Talk 101</div></div>
           </button>
 
           <button class="topicTile" data-topic="relationships" role="listitem">
-            <div class="tileIcon">
-              <div class="iconBox">
-                <div class="heartCheck"></div>
-              </div>
-            </div>
-            <div class="tileText">
-              <div class="tileTitle">Relationships</div>
-              <div class="tileSub">All about love</div>
-            </div>
+            <div class="tileIcon"><div class="iconBox"><div class="heartCheck"></div></div></div>
+            <div class="tileText"><div class="tileTitle">Relationships</div><div class="tileSub">All about love</div></div>
           </button>
         </div>
       </section>
 
-      <!-- COURSE VIEW -->
       <section id="courseView" class="view" aria-label="Course">
         <div class="courseTop">
           <button class="backLink" id="backHomeBtn" type="button">← Back</button>
           <div class="courseHeading">
             <div class="courseKicker" id="courseKicker">MY KNOWLEDGE</div>
             <h2 class="courseTitle" id="courseTitle">Topic</h2>
+            <div class="courseMeta" id="courseMeta"></div>
           </div>
           <div class="courseRight">
             <div class="progressDots" id="progressDots" aria-label="Progress"></div>
@@ -180,30 +133,24 @@
         </div>
 
         <div class="cardStage">
-          <article class="flashCard" id="flashCard" aria-live="polite">
-            <!-- dynamic -->
-          </article>
+          <article class="flashCard" id="flashCard" aria-live="polite"></article>
 
           <div class="cardNav">
             <button class="ghostBtn" id="prevBtn" type="button">Back</button>
             <button class="primaryBtn" id="nextBtn" type="button">Next</button>
           </div>
 
-          <div class="tinyBar">
-            <div class="tinyFill" id="tinyFill"></div>
-          </div>
-
-          <p class="hint" id="hintText">Tip: Answer the quiz questions to unlock the next card.</p>
+          <div class="tinyBar"><div class="tinyFill" id="tinyFill"></div></div>
+          <p class="hint" id="hintText">Tip: Answer quiz questions to unlock Next.</p>
         </div>
       </section>
 
-      <!-- MODAL -->
       <div class="modal" id="modal" aria-hidden="true">
         <div class="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
           <h3 id="modalTitle">How it works</h3>
           <p>
-            Pick a topic, swipe through cards (Back/Next), and answer quick questions.
-            This is built like a UN-style micro-course: short, clear, and interactive.
+            Choose a topic → swipe through cards → answer quick questions.
+            Some cards are stories with a named character (UN-course vibe).
           </p>
           <button class="primaryBtn" id="closeModalBtn" type="button">Got it</button>
         </div>
@@ -214,7 +161,7 @@
   </main>
 
   <footer class="footer">
-    <div>Built for GitHub Pages • Interactive cards + quizzes</div>
+    <div>Built for GitHub Pages • UN-style micro-courses • Zambia-focused</div>
   </footer>
 
   <script src="app.js"></script>
